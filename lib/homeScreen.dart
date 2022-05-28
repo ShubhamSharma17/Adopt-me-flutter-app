@@ -1,6 +1,10 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, file_names
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pet_ui/authentication_pages/Login_page.dart';
 import 'package:pet_ui/configuration.dart';
 
 import 'package:pet_ui/slider_page/animal_list/animals_list.dart';
@@ -16,6 +20,30 @@ class _HomeScreenState extends State<HomeScreen> {
   double yOffset = 0;
   double scaleFactor = 1;
   bool isDrawerOpen = false;
+  String txt = '';
+
+  //function for snack
+  void snackBarMethod(String text) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(text),
+      backgroundColor: Colors.blue,
+      duration: Duration(milliseconds: 2000),
+      dismissDirection: DismissDirection.up,
+    ));
+  }
+
+  //function for logout
+
+  void signOut() async {
+    await FirebaseAuth.instance.signOut();
+    snackBarMethod(txt = 'Logged Out!');
+    Navigator.popUntil(context, (route) => route.isFirst);
+    Navigator.pushReplacement(
+        context,
+        CupertinoPageRoute(
+          builder: (context) => LoginPage(),
+        ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +89,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                             icon: Icon(Icons.menu),
                           ),
+                    IconButton(
+                      onPressed: () {
+                        signOut();
+                      },
+                      icon: Icon(Icons.exit_to_app),
+                    ),
                   ],
                 ),
               ),

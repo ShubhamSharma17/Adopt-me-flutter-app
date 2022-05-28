@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_null_comparison
 
 import 'dart:developer';
 
@@ -19,10 +19,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController confirmPasswordemailController =
       TextEditingController();
 
+  //function for signup account
   void signUp() async {
-    String email = emailController.text.toString();
-    String password = passwordController.text.toString();
-    String confirmPassword = confirmPasswordemailController.text.toString();
+    String email = emailController.text.trim();
+    String password = passwordController.text.trim();
+    String confirmPassword = confirmPasswordemailController.text.trim();
 
     if (email == '' || password == '' || confirmPassword == '') {
       //snack bar
