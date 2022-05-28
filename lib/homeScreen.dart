@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:pet_ui/configuration.dart';
-import 'package:pet_ui/drawerScreen.dart';
+
 import 'package:pet_ui/slider_page/animal_list/animals_list.dart';
 import 'package:pet_ui/utils/text.dart';
 

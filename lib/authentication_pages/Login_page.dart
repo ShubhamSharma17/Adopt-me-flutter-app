@@ -1,10 +1,12 @@
 // ignore_for_file: use_key_in_widget_constructors, file_names, prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
 import 'package:pet_ui/Routes.dart';
+import 'package:pet_ui/authentication_pages/signup/signupwithemail.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -246,14 +248,19 @@ class LoginPageState extends State<LoginPage> {
                           ),
                           ElevatedButton(
                               onPressed: () {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text("Not Support Yet"),
-                                    backgroundColor: Colors.green,
-                                    duration: Duration(milliseconds: 1000),
-                                    dismissDirection: DismissDirection.up,
-                                  ),
-                                );
+                                // ScaffoldMessenger.of(context).showSnackBar(
+                                //   SnackBar(
+                                //     content: Text("Not Support Yet"),
+                                //     backgroundColor: Colors.green,
+                                //     duration: Duration(milliseconds: 1000),
+                                //     dismissDirection: DismissDirection.up,
+                                //   ),
+                                // );
+                                Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) => SignUpScreen(),
+                                    ));
                               },
                               child: Text("Sign Up")),
                         ],
