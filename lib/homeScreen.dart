@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, file_names
 
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_ui/authentication_pages/Login_page.dart';
@@ -53,7 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
           transform: Matrix4.translationValues(xOffset, yOffset, 0)
             ..scale(scaleFactor),
           decoration: BoxDecoration(
-            color: Colors.greenAccent[200],
+            // color: Colors.greenAccent[200],
+            color: Colors.blue[200],
             borderRadius: BorderRadius.circular(isDrawerOpen ? 20 : 0),
           ),
           duration: Duration(milliseconds: 500),
@@ -62,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Container(
                 margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-                color: Colors.greenAccent[200],
+                color: Colors.blue[200],
                 padding: EdgeInsets.only(top: 20, right: 10, bottom: 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,6 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                       onPressed: () {
                         signOut();
+                        log('Loged Out!');
                       },
                       icon: Icon(Icons.exit_to_app),
                     ),
@@ -191,8 +195,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                     colors: const [
-                                      Colors.greenAccent,
-                                      Colors.grey,
+                                      Colors.lightBlueAccent,
+                                      Colors.blue,
                                       // Colors.yellow,
                                       // Colors.greenAccent,
                                     ],

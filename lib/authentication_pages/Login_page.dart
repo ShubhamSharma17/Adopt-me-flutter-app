@@ -6,6 +6,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pet_ui/authentication_pages/loginwithphone/login_with_phone.dart';
 import 'package:pet_ui/authentication_pages/signup/signupwithemail.dart';
 import 'package:pet_ui/homeScreen.dart';
 
@@ -195,12 +196,26 @@ class LoginPageState extends State<LoginPage> {
                   SizedBox(
                     height: 5,
                   ),
-                  ElevatedButton(
-                    child: Text("Log In"),
-                    onPressed: () {
-                      // checkValidation(context);
-                      signIn();
-                    },
+                  Column(
+                    children: [
+                      ElevatedButton(
+                        child: Text("Log In"),
+                        onPressed: () {
+                          // checkValidation(context);
+                          signIn();
+                        },
+                      ),
+                      CupertinoButton(
+                        child: Text('Login With Phone'),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                  builder: (context) => PhoneLogin()));
+                        },
+                        color: Colors.blue,
+                      )
+                    ],
                   ),
                   Container(
                     // color: Colors.amberAccent,
